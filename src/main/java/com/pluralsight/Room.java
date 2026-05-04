@@ -11,8 +11,8 @@ public class Room {
     public Room(int bed, double price) {
         this.bed = bed;
         this.price = price;
-        this.occupied = false;
-        this.dirty  = false;
+        this.occupied = true;
+        this.dirty  = true;
         this.available = false;
     }
 
@@ -33,6 +33,9 @@ public class Room {
     }
 
     public boolean isAvailable() {
-        return available;
+        if (isOccupied() && isDirty()) {
+            return false;
+        }
+        return isAvailable();
     }
 }
