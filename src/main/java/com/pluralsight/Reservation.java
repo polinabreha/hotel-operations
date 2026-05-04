@@ -2,18 +2,16 @@ package com.pluralsight;
 
 public class Reservation {
     private String roomType;
-    private double price;
-    public double priceKing;
-    public double priceDouble;
+    private final double PRICE_KING;
+    private final double PRICE_DOUBLE;
     private int numberOfNights;
     private boolean weekend;
 
 
-    public Reservation(String roomType, double price, int numberOfNights, boolean weekend) {
+    public Reservation(String roomType, int numberOfNights, boolean weekend) {
         this.roomType = roomType;
-        this.price = price;
-        this.priceKing = 139.00;
-        this.priceDouble = 124.00;
+        this.PRICE_KING = 139.00;
+        this.PRICE_DOUBLE = 124.00;
         this.numberOfNights = numberOfNights;
         this.weekend = weekend;
     }
@@ -31,10 +29,6 @@ public class Reservation {
         this.roomType = roomType;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
     public int getNumberOfNights() {
         return numberOfNights;
     }
@@ -45,23 +39,25 @@ public class Reservation {
         return weekend;
     }
 
-    public void setWeekend(boolean weekend) {
+    public void setIsWeekend(boolean weekend) {
         this.weekend = weekend;
     }
 
     public double getReservationTotal(){
+        double total = 0.00 ;
         if (roomType.equalsIgnoreCase("King")) {
-            price = priceKing * numberOfNights;
+            total = PRICE_KING * numberOfNights;
             if (weekend) {
-                price = priceKing * numberOfNights * 0.1;
+                total = PRICE_KING * numberOfNights * 1.1;
             }
         } else if (roomType.equalsIgnoreCase("Double")) {
-            price = priceDouble * numberOfNights;
+            total = PRICE_DOUBLE * numberOfNights;
             if (weekend) {
-                price = priceDouble * numberOfNights * 0.1;
+                total = PRICE_DOUBLE * numberOfNights * 1.1;
             }
         }
-        return price;
+
+        return total;
     }
 
 
