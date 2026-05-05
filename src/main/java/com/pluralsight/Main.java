@@ -5,15 +5,16 @@ public class Main {
         room();
         reservation();
         employee();
+        hotel();
 
     }
 
     public static void room(){
         Room room = new Room(2,150.00);
-        System.out.println("Available: " + room.isAvailable()); // false
+        System.out.println("Available: " + room.isAvailable());
         room.checkOut();
         room.cleanRoom();
-        System.out.println("Available: " + room.isAvailable()); // true
+        System.out.println("Available: " + room.isAvailable());
 
         Reservation res = new Reservation("King", 3, true);
         System.out.printf("Total: %.2f%n" , res.getReservationTotal());
@@ -39,5 +40,19 @@ public class Main {
         System.out.println("Overtime Hours: " + emp.getOvertimeHours());
         System.out.println("Hours worked: " + emp.getHoursWorked());
         System.out.println("Total Pay: " + emp.getTotalPay());
+    }
+
+    public static void hotel(){
+        Hotel hotel = new Hotel("Forest", 19,30, 2,5);
+        System.out.println("Hotel Name: " + hotel.getName());
+        System.out.println("Available rooms" + hotel.getAvailableRooms());
+        System.out.println("Available suits: " + hotel.getAvailableSuites());
+        System.out.println("Number of rooms: " + hotel.getNumberOfRooms());
+        System.out.println("Number of suits" + hotel.getNumberOfSuites());
+        System.out.println("Number of booked rooms: " + hotel.getBookedBasicRooms());
+        System.out.println("Number of booked suits: " + hotel.getBookedSuites());
+        System.out.println(hotel.bookRoom(5,true));
+        System.out.println(hotel.bookRoom(5,false));
+
     }
 }
