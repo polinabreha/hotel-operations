@@ -68,6 +68,16 @@ public class Employee {
         }
     }
 
+
+        /*
+          public void punchIn(int time){
+            startTime = time;
+          }
+         public void punchOut (int time){
+              hoursWorked += time - startTime;
+          }
+         */
+
     public void punchTimeCard(int time){
         if(!isClockedIn){
             startTime = time;
