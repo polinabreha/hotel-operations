@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class Employee {
-    private int employeeId;
+    private final int employeeId;
     private final String name;
     private String department;
     private double payRate;
@@ -45,7 +45,7 @@ public class Employee {
     public double getOvertimeHours(){
         if (hoursWorked > 40){
         return hoursWorked - 40;
-        }else {
+        } else {
             return 0.00;
         }
     }
