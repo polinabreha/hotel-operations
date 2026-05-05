@@ -20,9 +20,6 @@ public class Employee {
     public int getEmployeeId() {
         return employeeId;
     }
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
     public String getName() {
         return name;
     }
@@ -61,11 +58,7 @@ public class Employee {
     }
 
     public double getTotalPay(){
-        if(hoursWorked > 40){
-            return (getOvertimeHours() * (payRate * 1.5)) + getRegularHours() * payRate ;
-        } else {
-            return (hoursWorked * payRate);
-        }
+        return (getRegularHours() * payRate) + (getOvertimeHours() * payRate * 1.5);
     }
 
 
