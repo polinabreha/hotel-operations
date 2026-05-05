@@ -32,7 +32,7 @@ public class Main {
         Employee emp = new Employee(1, "John", "IT") ;
         emp.setPayRate(20.00);
         emp.punchTimeCard(9);
-        emp.punchTimeCard(20);
+        emp.punchTimeCard(17);
 
         System.out.println("Hours Worked: " + emp.getHoursWorked());
         System.out.println("Regular Hours: " + emp.getRegularHours());

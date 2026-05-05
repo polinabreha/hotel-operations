@@ -1,12 +1,14 @@
 package com.pluralsight;
 
+import java.time.LocalTime;
+
 public class Employee {
     private final int employeeId;
     private final String name;
     private String department;
     private double payRate;
     private double hoursWorked;
-    private int startTime;
+    private double startTime;
     private boolean isClockedIn;
 
     public Employee(int employeeId, String name, String department) {
@@ -62,14 +64,24 @@ public class Employee {
     }
 
 
-        /*
-          public void punchIn(int time){
-            startTime = time;
-          }
-         public void punchOut (int time){
-              hoursWorked += time - startTime;
-          }
-         */
+
+    public void punchIn(int time){
+       startTime = time;
+    }
+
+    public void punchIn(){
+        LocalTime now = LocalTime.now();
+        startTime = now.getHour() + (now.getMinute() / 60.0);
+
+    }
+
+    public void punchOut (int time){
+       hoursWorked += time - startTime;
+    }
+    public void punchOut(){
+        LocalTime now = LocalTime.now();
+        hoursWorked += (now.getHour() + (now.getMinute() / 60.0)) - startTime;
+    }
 
     public void punchTimeCard(int time){
         if(!isClockedIn){
@@ -80,7 +92,5 @@ public class Employee {
             this.isClockedIn = false;
             startTime = 0;
         }
-
-
     }
 }
