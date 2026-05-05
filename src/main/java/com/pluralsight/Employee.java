@@ -1,24 +1,21 @@
 package com.pluralsight;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 public class Employee {
     private int employeeId;
-    private String firstName;
-    private String lastName;
+    private final String name;
     private String department;
     private double payRate;
     private double hoursWorked;
     private int startTime;
+    private boolean isClockedIn;
 
-    public Employee(int employeeId, String firstName, String lastName, String department) {
+    public Employee(int employeeId, String name, String department) {
         this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.department = department;
         this.payRate = 0.0;
         this.hoursWorked = 0.0;
+        this.isClockedIn = false;
     }
     public int getEmployeeId() {
         return employeeId;
@@ -27,7 +24,7 @@ public class Employee {
         this.employeeId = employeeId;
     }
     public String getName() {
-        return firstName + " " + lastName;
+        return name;
     }
     public String getDepartment() {
         return department;
@@ -51,8 +48,9 @@ public class Employee {
     public double getOvertimeHours(){
         if (hoursWorked > 40){
         return hoursWorked - 40;
+        }else {
+            return 0.00;
         }
-        return 0.00;
     }
 
     public double getRegularHours(){
@@ -70,10 +68,16 @@ public class Employee {
         }
     }
 
-    public void punchIn(int time){
-        startTime = time;
-    }
-    public void punchOut (int time){
-        hoursWorked += time - startTime;
+    public void punchTimeCard(int time){
+        if(!isClockedIn){
+            startTime = time;
+            this.isClockedIn = true;
+        }else  {
+            hoursWorked += time - startTime;
+            this.isClockedIn = false;
+            startTime = 0;
+        }
+
+
     }
 }

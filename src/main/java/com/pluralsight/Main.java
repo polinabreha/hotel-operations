@@ -29,15 +29,15 @@ public class Main {
 
     }
     public static void employee(){
-        Employee emp = new Employee(1, "John", "Doe", "IT");
+        Employee emp = new Employee(1, "John", "IT") ;
         emp.setPayRate(20.00);
-
-        emp.punchIn(9);
-        emp.punchOut(17);
+        emp.punchTimeCard(9);
+        emp.punchTimeCard(20);
 
         System.out.println("Hours Worked: " + emp.getHoursWorked());
         System.out.println("Regular Hours: " + emp.getRegularHours());
         System.out.println("Overtime Hours: " + emp.getOvertimeHours());
+        System.out.println("Hours worked: " + emp.getHoursWorked());
         System.out.println("Total Pay: " + emp.getTotalPay());
     }
 }

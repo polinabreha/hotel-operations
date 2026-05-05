@@ -3,8 +3,7 @@ package com.pluralsight;
 public class Room {
     private final int bed;
     private final double price;
-    private boolean occupied;
-    private boolean dirty;
+    private boolean occupied, dirty;
 
 
     public Room(int bed, double price) {
@@ -39,7 +38,7 @@ public class Room {
     }
 
     public boolean isAvailable() {
-        return !isOccupied() && !isDirty();
+        return !this.isOccupied() && ! this.isDirty();
     }
 
     public void checkIn(){
